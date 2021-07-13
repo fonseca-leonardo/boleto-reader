@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import BoletoReader from './BoletoReader';
 
 function App() {
   const [boletoCode, setBoletoCode] = useState<string>('');
-  const [stop, setStop] = useState<boolean>(true);
+  const [stop, setStop] = useState<boolean>(false);
 
 
 

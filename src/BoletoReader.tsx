@@ -15,7 +15,6 @@ const BoletoReader: React.FC<BoletoReaderProps> = ({ onDetectCode, stop }) => {
     }
     let digitoVerificador = 0;
     let numeroPar = true;
-    let i = codigoBarraSessao.length
     for (let i = codigoBarraSessao.length; i > 0; i--) {
         const digito = parseInt(codigoBarraSessao[i - 1]);
         if (numeroPar) {
