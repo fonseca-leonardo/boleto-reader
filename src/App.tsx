@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect } from 'react';
+import BoletoReader from './BoletoReader';
 
 function App() {
+  const [boletoCode, setBoletoCode] = useState<string>('');
+  const [stop, setStop] = useState<boolean>(true);
+
+
+
+  const __onDetectCode = (result: string, check: string[]) => {
+    setBoletoCode(result);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Escanear Boleto</h1>
+      <h3>{boletoCode ? boletoCode : 'Escanear boleto'}</h3>
+      <BoletoReader onDetectCode={__onDetectCode} stop={stop}/>
+      <button onClick={() => {
+        console.log('parar')
+        setStop(!stop)
+      }}>{stop ? 'LER': 'PARAR LEITURA' }</button>
     </div>
   );
 }
